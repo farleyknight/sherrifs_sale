@@ -2,10 +2,7 @@ require 'yaml'
 require 'active_record'
 require 'geocoder'
 
-
-dbconfig = YAML::load(File.open('database.yml'))
-ActiveRecord::Base.establish_connection(dbconfig)
-
+ActiveRecord::Base.establish_connection(YAML.load_file('mysql.yml'))
 
 class Property < ActiveRecord::Base
   extend Geocoder::Model::ActiveRecord
